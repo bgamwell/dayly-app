@@ -1,0 +1,19 @@
+{
+  "name": "Dayly",
+  "version": "0.0.1",
+  "description": "Dayly allows you to save a daily log of your activities, and share them with friends. And since each log is limited to 60 characters, you always have time to record what you did.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Brennan Gamwell",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^0.8.3",
+    "body-parser": "^1.13.2",
+    "express": "^4.13.1",
+    "express-session": "^1.11.3",
+    "mongoose": "^4.0.8",
+    "nodemon": "^1.3.8"
+  }
+}
