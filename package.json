@@ -4,7 +4,8 @@
   "description": "Dayly allows you to save a daily log of your activities, and share them with friends. And since each log is limited to 60 characters, you always have time to record what you did.",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "Brennan Gamwell",
   "license": "ISC",
