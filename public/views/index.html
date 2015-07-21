@@ -92,6 +92,7 @@
     </div>
   </div>
 
+  <!-- body content goes here -->
   <div class="container">
     <div class="row">
       <div class="col-md-3 col-sm-4">
@@ -110,7 +111,7 @@
       </div>
       <div class="col-md-6 col-sm-8">
         <div class="panel panel-default">
-          <div class="panel-heading">All Dailies</div>
+          <div class="panel-heading">All Daylys</div>
           <!-- list of daily logs -->
           <ul class="list-group" id="log-list">
             <!-- data from log-template goes here -->
@@ -147,9 +148,7 @@
   <!-- underscore template for workout logs -->
   <script type="text/template" id="log-template">
     <li class="list-group-item">
-      <!-- <span class="label label-success"><%= type %></span> -->
-      &nbsp;
-      <%= diary_entry %>, <%= date %>
+      <%= diary_entry %>
     </li>
   </script>
 </body>
