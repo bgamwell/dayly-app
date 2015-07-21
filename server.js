@@ -26,7 +26,8 @@ app.use(session({
   cookie: { maxAge: 60000 }
 }));
 
-// middleware to manage sessions
+// ******Middleware to manage sessions******
+
 app.use('/', function (req, res, next) {
   // saves userId in session for logged-in user
   req.login = function (user) {
@@ -75,6 +76,12 @@ app.post('/login', function (req, res) {
 // create new user with secure password
 app.post('/users', function (req, res) {
   var newUser = req.body.user;
+  console.log(newUser.email);
+
+  if ( User.find({ email: newUser.email }) !== null ) {
+    throw new Error('The email address you entered is already taken: ' + newUser.email);
+  }
+
   User.createSecure(newUser, function (err, user) {
     // log in user immediately when created
     req.login(user); //this does not seem to be working
@@ -109,8 +116,6 @@ app.get('/api/users/current', function (req, res) { // returns all info on a cur
     res.json(user);
   });
 });
-
-//ONCE A USER LOGS IN, HE SHOULD BE ABLE TO POST
 
 // create new log
 app.post('/api/logs', function (req, res) {
@@ -150,6 +155,7 @@ app.get('/api/logs', function (req, res) { // render every single log to the hom
   });
 });
 
+// show all logs for the current user
 app.get('/api/currentlogs', function(req, res) {
   Log.find({ user: req.session.userId }, function(err, logs){ //this test function is returning a 404 error
     res.json(logs);

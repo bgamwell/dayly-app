@@ -10,7 +10,8 @@
   <!-- custom styles -->
   <link type="text/css" rel="stylesheet" href="styles/style.css">
 
-  <title>Dayly</title>
+  <title>Dayly | Your Day in 60 Characters or Fewer</title>
+
 </head>
 <body>
 
@@ -95,20 +96,21 @@
   <!-- body content goes here -->
   <div class="container">
     <div class="row">
-      <div class="col-md-3 col-sm-4">
+
+      <div class="col-md-8 col-sm-12">
 
       </div>
-      <div class="col-md-6 col-sm-8">
-        <div class="panel panel-default">
-          <div class="panel-heading">All Daylys</div>
+
+      <div class="col-md-4 col-sm-12">
+          <h1>All Daylys</h1>
           <!-- list of daily logs -->
           <ul class="list-group" id="log-list">
             <!-- data from log-template goes here -->
           </ul>
-        </div>
       </div>
-    </div>
-  </div>
+
+    </div> <!-- .row close -->
+  </div> <!-- .container close -->
 
   <!-- jquery -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
@@ -118,6 +120,9 @@
 
   <!-- underscore -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+
+  <!-- geo location plugin -->
+  <script type="text/javascript" src="http://www.geoplugin.net/javascript.gp"></script>
 
   <!-- custom scripts -->
   <script type="text/javascript" src="scripts/main.js"></script>
@@ -136,8 +141,8 @@
 
   <!-- underscore template for Dayly logs -->
   <script type="text/template" id="log-template">
-    <li class="list-group-item">
-      <%= diary_entry %> &nbsp; <%= date %> <!--figure out how to append a user's first name to their posts -->
+    <li>
+      <%= diary_entry %> &nbsp; <%= date %>
     </li>
   </script>
 
