@@ -1,0 +1,4 @@
+/* to be added to your global CSS file */
+div small.error {
+  color: #B94A48; /* color to match Bootstraps error class */
+}

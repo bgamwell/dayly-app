@@ -10,7 +10,7 @@ var mongoose = require('mongoose'),
 
 var UserSchema = new Schema ({
   firstname: String,
-  lasname: String,
+  lastname: String,
   email: String,
   passwordDigest: String
 });
@@ -41,7 +41,6 @@ UserSchema.statics.createSecure = function (userData, callback) {
 UserSchema.statics.authenticate = function (email, password, callback) {
   // find user by email entered at log in
   this.findOne({email: email}, function (err, user) {
-    console.log(user);
 
     // throw error if can't find user
     if (user === null) {

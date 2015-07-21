@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- bootstrap css -->
+  <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+  <!-- custom styles -->
+  <link type="text/css" rel="stylesheet" href="styles/style.css">
+
+  <title>Dayly</title>
+</head>
+<body>
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Dayly</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right" id="nav-links">
+          <!-- data from nav-template goes here -->
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container -->
+  </nav>
+
+  <!-- signup modal -->
+  <div class="modal fade" id="signup-modal" tabindex="-1" role="dialog" aria-labelledby="signupModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Sign Up</h4>
+        </div>
+        <form method="post" action="/users">
+          <div class="modal-body">
+            <div class="form-group">
+              <input type="text" name="user[firstName]" class="form-control" placeholder="First Name">
+            </div>
+            <div class="form-group">
+              <input type="text" name="user[lastName]" class="form-control" placeholder="Last Name">
+            </div>
+            <div class="form-group">
+              <input type="text" name="user[avatar]" class="form-control" placeholder="Avatar (Image URL)">
+            </div>
+            <div class="form-group">
+              <input type="email" name="user[email]" class="form-control" placeholder="Email">
+            </div>
+            <div class="form-group">
+              <input type="password" name="user[password]" class="form-control" placeholder="Password">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <input type="submit" value="Sign Up" class="btn btn-primary">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- login modal -->
+  <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="loginModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Log In</h4>
+        </div>
+        <form method="post" action="/login">
+          <div class="modal-body">
+            <div class="form-group">
+              <input type="email" name="user[email]" class="form-control" placeholder="Email">
+            </div>
+            <div class="form-group">
+              <input type="password" name="user[password]" class="form-control" placeholder="Password">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <input type="submit" value="Log In" class="btn btn-primary">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 col-sm-4">
+        <div class="well">
+          <p>New Dayly</p>
+          <!-- form to create new log log -->
+          <form method="post" action="/api/logs">
+            <div class="form-group">
+              <input type="text" name="log[diary_entry]" class="form-control" placeholder="What did you do today?" id="new-log" maxlength="60">
+            </div>
+            <div class="form-group">
+              <input type="submit" value="Share" class="btn btn-primary btn-block">
+            </div>
+          </form>
+          <div id="counter">
+            60
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-8">
+        <div class="panel panel-default" id="show-user">
+          <!-- data from user-template goes here -->
+        </div>
+
+
+        <ul class="list-group" id="log-list">
+          <!-- data from log-template goes here -->
+        </ul>
+
+
+      </div>
+    </div>
+  </div>
+
+  <!-- jquery -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+
+  <!-- bootstrap js -->
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+  <!-- underscore -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+
+  <!-- custom scripts -->
+  <script type="text/javascript" src="scripts/main.js"></script>
+  <script type="text/javascript" src="scripts/users.js"></script>
+  <script type="text/javascript" src="scripts/counter.js"></script>
+
+  <!-- underscore template for nav links -->
+  <script type="text/template" id="nav-template">
+    <% if (currentUser) { %> <!-- current user is not defined -->
+      <li><a href="/profile">Profile</a></li>
+      <li><a href="/logout">Log Out</a></li>
+    <% } else { %>
+      <li><a href="#" data-toggle="modal" data-target="#signup-modal">Sign Up</a></li>
+      <li><a href="#" data-toggle="modal" data-target="#login-modal">Log In</a></li>
+    <% } %>
+  </script>
+
+  <!-- underscore template for user -->
+  <script type="text/template" id="user-template">
+    <div class="panel-heading">
+      <strong>Welcome, <%= currentUser.firstname %>!</strong>
+    </div>
+  </script>
+
+  <!-- underscore template for Dayly logs -->
+  <script type="text/template" id="log-template">
+    <li class="list-group-item">
+      <%= diary_entry %> &nbsp; <%= date %> <!--figure out how to append a user's first name to their posts -->
+    </li>
+  </script>
+
+</body>
+</html>

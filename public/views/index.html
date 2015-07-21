@@ -42,7 +42,7 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h4 class="modal-title" id="myModalLabel">Sign Up</h4>
         </div>
-        <form method="post" action="/users">
+        <form method="post" action="/users" id="signup-form">
           <div class="modal-body">
             <div class="form-group">
               <input type="text" name="user[firstname]" class="form-control" placeholder="First Name">
@@ -96,18 +96,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-3 col-sm-4">
-        <div class="well">
-          <p>New Daily</p>
-          <!-- form to create a new daily log -->
-          <form id="new-log">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="What did you do today?" id="new-log">
-            </div>
-            <div class="form-group">
-              <input type="submit" value="Share" class="btn btn-primary btn-block">
-            </div>
-          </form>
-        </div>
+
       </div>
       <div class="col-md-6 col-sm-8">
         <div class="panel panel-default">
@@ -145,11 +134,12 @@
     <% } %>
   </script>
 
-  <!-- underscore template for workout logs -->
+  <!-- underscore template for Dayly logs -->
   <script type="text/template" id="log-template">
     <li class="list-group-item">
-      <%= diary_entry %>
+      <%= diary_entry %> &nbsp; <%= date %> <!--figure out how to append a user's first name to their posts -->
     </li>
   </script>
+
 </body>
 </html>

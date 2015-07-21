@@ -36,7 +36,6 @@ app.use('/', function (req, res, next) {
   // finds user currently logged in based on `session.userId`
   req.currentUser = function (callback) { // "currentUser" is defined in the express middleware to manage sessions
     User.findOne({_id: req.session.userId}, function (err, user) {
-      console.log(user);
       req.user = user;
       callback(null, user);
     });
@@ -54,8 +53,6 @@ app.use('/', function (req, res, next) {
 // *****Static Routes*****
 
 app.get('/', function(req, res) {
-  console.log(req.session.userId);
-  console.log(__dirname);
   res.sendFile(__dirname + '/public/views/index.html'); // send index.html to localhost:3000 as the homepage
 });
 
@@ -78,13 +75,10 @@ app.post('/login', function (req, res) {
 // create new user with secure password
 app.post('/users', function (req, res) {
   var newUser = req.body.user;
-  console.log(newUser);
   User.createSecure(newUser, function (err, user) {
-    console.log("You have entered the /users function!");
     // log in user immediately when created
     req.login(user); //this does not seem to be working
-    // res.redirect('/profile');
-    res.json(user);
+    res.redirect('/profile');
   });
 });
 
@@ -112,15 +106,7 @@ app.get('/logout', function (req, res) {
 app.get('/api/users/current', function (req, res) { // returns all info on a current user; question: is creating a public api like this secure? the user's hashed and salted password is available to anyone with the api URL, or is this not a concern because the user has to be logged in for the api to be available?
   // check for current (logged-in) user
   req.currentUser(function (err, user) {
-    console.log(user);
     res.json(user);
-  });
-});
-
-// show all logs
-app.get('/api/logs', function (req, res) { // render every single log to the homepage
-  Log.find(function (err, logs) {
-    res.json(logs);
   });
 });
 
@@ -129,7 +115,8 @@ app.get('/api/logs', function (req, res) { // render every single log to the hom
 // create new log
 app.post('/api/logs', function (req, res) {
 
-  currentUser = req.currentUser.id;
+  // currentUser = req.currentUser.id;
+  currentUser = req.session.userId;
   console.log("This is the current user!");
   console.log(currentUser);
 
@@ -140,22 +127,34 @@ app.post('/api/logs', function (req, res) {
                   + currentdate.getDate() + "/"
                   + currentdate.getFullYear() + " @ "
                   + currentdate.getHours() + ":"
-                  + currentdate.getMinutes() + ":"
-                  + currentdate.getSeconds();
+                  + currentdate.getMinutes();
 
   // create new instance of Log
   var newLog = new Log({
     diary_entry: logData.diary_entry,
     date: datetime,
-    user: req.currentUser.id
+    user: currentUser
   });
 
   // save new log in db
-newLog.save(function (err, savedLog) {
-  res.json(savedLog);
-});
+  newLog.save( function(err, savedLog) {
+    res.redirect('/profile'); //this is not the most efficient, but it works. how can we prevent page reload every time?
+  });
+
 });
 
+// show all logs
+app.get('/api/logs', function (req, res) { // render every single log to the homepage
+  Log.find(function (err, logs) {
+    res.json(logs);
+  });
+});
+
+app.get('/api/currentlogs', function(req, res) {
+  Log.find({ user: req.session.userId }, function(err, logs){ //this test function is returning a 404 error
+    res.json(logs);
+  });
+});
 
 // listen on port 3000
 app.listen(process.env.PORT || 3000);
