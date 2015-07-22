@@ -26,6 +26,9 @@ app.use(session({
   cookie: { maxAge: 60000 }
 }));
 
+// variable to ensure mongo search works
+var ObjectId = mongoose.Schema.Types.ObjectId;
+
 // ******Middleware to manage sessions******
 
 app.use('/', function (req, res, next) {
@@ -159,6 +162,31 @@ app.get('/api/logs', function (req, res) { // render every single log to the hom
 app.get('/api/currentlogs', function(req, res) {
   Log.find({ user: req.session.userId }, function(err, logs){ //this test function is returning a 404 error
     res.json(logs);
+  });
+});
+
+// get one dayly based on its id
+// app.get('/api/logs/:id', function(req, res) {
+//
+//   var targetId = req.params.id;
+//
+//   Log.findOne({ _id: targetId }, function( err, foundLog) {
+//     console.log(foundLog);
+//     res.json(foundLog);
+//   });
+// });
+
+//update a dayly
+app.put('/api/logs/:id', function(req, res) {
+
+  var targetId = req.params.id;
+
+  Log.findOne({ _id: targetId }, function( err, foundLog) {
+    console.log(foundLog);
+    foundLog.diary_entry = req.body.diary_entry;
+    foundLog.save( function(err, savedLog) {
+      res.json(savedLog);
+    });
   });
 });
 

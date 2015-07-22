@@ -46,7 +46,7 @@
         <form method="post" action="/users" id="signup-form">
           <div class="modal-body">
             <div class="form-group">
-              <input type="text" name="user[firstname]" id="firstname" class="form-control" placeholder="First Name">
+              <input type="text" name="user[firstname]" id="firstname" class="form-control" placeholder="First Name" autofocus>
             </div>
             <div class="form-group">
               <input type="text" name="user[lastname]" id="lastname" class="form-control" placeholder="Last Name">
@@ -81,10 +81,10 @@
         <form method="post" action="/login" id="login-form">
           <div class="modal-body">
             <div class="form-group">
-              <input type="email" name="user[email]" class="form-control" placeholder="Email" require>
+              <input type="email" name="user[email]" class="form-control" placeholder="Email" autofocus>
             </div>
             <div class="form-group">
-              <input type="password" name="user[password]" class="form-control" placeholder="Password" require>
+              <input type="password" name="user[password]" class="form-control" placeholder="Password">
             </div>
           </div>
           <div class="modal-footer">
