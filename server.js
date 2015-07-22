@@ -78,9 +78,9 @@ app.post('/users', function (req, res) {
   var newUser = req.body.user;
   console.log(newUser.email);
 
-  if ( User.find({ email: newUser.email }) !== null ) {
-    throw new Error('The email address you entered is already taken: ' + newUser.email);
-  }
+  // if ( User.find({ email: newUser.email }) !== null ) {
+  //   throw new Error('The email address you entered is already taken: ' + newUser.email);
+  // }
 
   User.createSecure(newUser, function (err, user) {
     // log in user immediately when created
