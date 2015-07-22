@@ -99,7 +99,7 @@
       <div class="col-md-3 col-sm-4">
         <div class="well">
           <p>New Dayly</p>
-          <!-- form to create new log log -->
+          <!-- form to create new log -->
           <form method="post" action="/api/logs">
             <div class="form-group">
               <input type="text" name="log[diary_entry]" class="form-control" placeholder="What did you do today?" id="new-log" maxlength="60">
@@ -140,7 +140,7 @@
   <!-- custom scripts -->
   <script type="text/javascript" src="scripts/main.js"></script>
   <script type="text/javascript" src="scripts/users.js"></script>
-  <script type="text/javascript" src="scripts/counter.js"></script>
+  <script type="text/javascript" src="scripts/profile.js"></script>
 
   <!-- underscore template for nav links -->
   <script type="text/template" id="nav-template">
@@ -162,9 +162,39 @@
 
   <!-- underscore template for Dayly logs -->
   <script type="text/template" id="log-template">
-    <li class="list-group-item">
-      <%= diary_entry %> &nbsp; <%= date %> <!--figure out how to append a user's first name to their posts -->
+    <li class="list-group-item" data-id="<%= _id %>">
+      <%= diary_entry %> &nbsp; <%= date %>
+      <span class="my-button-group">
+          <!-- edit link (pencil icon) to toggle form -->
+          <a class="edit-pencil" role="button" data-toggle="collapse" data-id="<%= _id %>">
+            <span class="glyphicon glyphicon-pencil edit"></span>
+          </a>
+        </span>
     </li>
+
+    <!-- edit dayly modal -->
+    <div class="modal fade" id="edit-dayly" tabindex="-1" role="dialog" aria-labelledby="loginModal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Edit Dayly</h4>
+          </div>
+          <form id="edit-form">
+            <div class="modal-body">
+              <div class="form-group">
+                <input type="text" name="diary_entry" class="form-control" placeholder="What are you doing today?" id="edit-text" autofocus>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <input type="submit" value="Update" class="btn btn-primary">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
   </script>
 
 </body>
