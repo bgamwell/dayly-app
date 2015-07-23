@@ -128,14 +128,39 @@ app.post('/api/logs', function (req, res) {
   console.log("This is the current user!");
   console.log(currentUser);
 
+
   var logData = req.body.log;
 
+  // defining logic for current date and time
   var currentdate = new Date();
-  var datetime = (currentdate.getMonth()+1) + "/"
-                  + currentdate.getDate() + "/"
-                  + currentdate.getFullYear() + " @ "
-                  + currentdate.getHours() + ":"
-                  + currentdate.getMinutes();
+  var month = (currentdate.getMonth()+1);
+  var day = currentdate.getDate();
+  var year = currentdate.getFullYear();
+  var hour = currentdate.getHours();
+  var minute = currentdate.getMinutes();
+
+  var suffix = 0;
+
+  if (hour > 12) {
+    suffix = "p.m.";
+  } else {
+    suffix = "a.m.";
+  }
+
+  if (hour >= 10 && hour <= 12) {
+    hour = hour;
+  } else if (hour > 12) {
+    hour = '0' + hour - 12;
+  } else {
+    hour = '0' + hour;
+  }
+
+  if (minute < 10) {
+    minute = "0" + minute;
+  }
+
+  var datetime = month+'/'+day+'/'+year+' @ '+hour+':'+minute+' '+suffix;
+  //end current time logic
 
   // create new instance of Log
   var newLog = new Log({
