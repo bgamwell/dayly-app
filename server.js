@@ -165,28 +165,19 @@ app.get('/api/currentlogs', function(req, res) {
   });
 });
 
-// get one dayly based on its id
-// app.get('/api/logs/:id', function(req, res) {
-//
-//   var targetId = req.params.id;
-//
-//   Log.findOne({ _id: targetId }, function( err, foundLog) {
-//     console.log(foundLog);
-//     res.json(foundLog);
-//   });
-// });
-
 // update a dayly
 app.put('/api/logs/:id', function(req, res) {
-
-  var targetId = req.params.id;
-
-  Log.findOne({ _id: targetId }, function( err, foundLog) {
-    console.log(foundLog);
-    foundLog.diary_entry = req.body.diary_entry;
-    foundLog.save();
-    });
+  Log.findById({_id: req.params.id}, function( err, foundLog) {
+  foundLog.diary_entry = req.body.diary_entry;
+  foundLog.save();
   });
+});
 
-// listen on port 3000
+app.delete('/api/logs/:id', function(req, res) {
+  Log.findById(req.params.id, function(err, foundLog){
+    res.json(foundLog);
+    foundLog.remove();
+  });
+});
+
 app.listen(process.env.PORT || 3000);

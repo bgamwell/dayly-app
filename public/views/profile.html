@@ -166,29 +166,32 @@
       <%= diary_entry %> &nbsp; <%= date %>
       <span class="my-button-group">
           <!-- edit link (pencil icon) to toggle form -->
-          <a class="edit-pencil" role="button" data-toggle="collapse" data-id="<%= _id %>">
+          <a class="edit-pencil" data-target="#edit-modal<%= _id %>" role="button" data-toggle="modal" data-id="<%= _id %>">
             <span class="glyphicon glyphicon-pencil edit"></span>
+          </a>&nbsp;
+          <a class="delete" role="button" data-toggle="collapse" data-id="<%= _id %>">
+            <span class="glyphicon glyphicon-remove" data-id="<%= _id %>"></span>
           </a>
         </span>
     </li>
 
     <!-- edit dayly modal -->
-    <div class="modal fade" id="edit-dayly" tabindex="-1" role="dialog" aria-labelledby="loginModal">
+    <div class="modal fade" id="edit-modal<%= _id %>" tabindex="-1" role="dialog" aria-labelledby="loginModal">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title" id="myModalLabel">Edit Dayly</h4>
           </div>
-          <form id="edit-form">
+          <form class="edit-form" data-log-id="<%= _id %>">
             <div class="modal-body">
               <div class="form-group">
-                <input type="text" name="diary_entry" class="form-control" placeholder="What are you doing today?" id="edit-text" autofocus>
+                <input type="text" name="diary_entry" class="form-control edit-text" id="<%= _id %>" placeholder="What are you doing today?" value="<%= diary_entry %>" autofocus>
               </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <input type="submit" value="Update" class="btn btn-primary">
+              <button type="submit" value="Update" class="btn btn-primary">Submit</button>
             </div>
           </form>
         </div>
