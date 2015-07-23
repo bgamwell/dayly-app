@@ -7,19 +7,25 @@
   <!-- bootstrap css -->
   <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
+  <!-- custom google fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Candal' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+
   <!-- custom styles -->
   <link type="text/css" rel="stylesheet" href="styles/style.css">
 
   <title>Dayly</title>
   </head>
   <body>
-    <nav class="navbar">
+
+    <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
           </button>
-          <a class="navbar-brand" href="/">Dayly</a>
+          <a class="navbar-brand logo" href="/">Dayly</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -90,9 +96,17 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-md-3 col-sm-4">
-        <div class="well">
-          <p>New Dayly</p>
+      <div class="col-md-6 col-md-offset-3">
+        <div class="inspiring-quote text-center" id="quote">
+          <p class="text-muted">Inspiring quote of the day</p>
+          <!-- append daily inspiring quote here -->
+        </div>
+        <hr>
+        <br>
+        <div class="welcome-user text-center" id="show-user">
+          <!-- data from user-template goes here -->
+        </div>
+        <div class="new-dayly">
           <!-- form to create new log -->
           <form method="post" action="/api/logs">
             <div class="form-group">
@@ -102,14 +116,9 @@
               <input type="submit" value="Share" class="btn btn-primary btn-block">
             </div>
           </form>
-          <div id="counter">
-            60
+          <div class="counter">
+            <p>Keep it short! >>> <span id="counter">60</span></p>
           </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-sm-8">
-        <div class="panel panel-default" id="show-user">
-          <!-- data from user-template goes here -->
         </div>
 
 
@@ -148,15 +157,13 @@
 
   <!-- underscore template for user -->
   <script type="text/template" id="user-template">
-    <div class="panel-heading">
-      <strong>Welcome, <%= currentUser.firstname %>!</strong>
-    </div>
+      <h1>Welcome, <%= currentUser.firstname %>!</h1>
   </script>
 
   <!-- underscore template for Dayly logs -->
   <script type="text/template" id="log-template">
     <li class="list-group-item" data-id="<%= _id %>">
-      <%= diary_entry %> &nbsp; <%= date %>
+      &nbsp; <%= diary_entry %> &nbsp; <%= date %>
       <span class="my-button-group">
           <!-- edit link (pencil icon) to toggle form -->
           <a class="edit-pencil" data-target="#edit-modal<%= _id %>" role="button" data-toggle="modal" data-id="<%= _id %>">
@@ -191,6 +198,10 @@
       </div>
     </div>
 
+  </script>
+
+  <script type="text/template" id="inspiring-quote">
+    <p class="quote-of-the-day"><%= contents.quotes[0].quote %> -<%= contents.quotes[0].author %></p>
   </script>
 
 </body>

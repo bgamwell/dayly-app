@@ -1,11 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="full" lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- bootstrap css -->
   <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+  <!-- custom google fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Candal' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
 
   <!-- custom styles -->
   <link type="text/css" rel="stylesheet" href="styles/style.css">
@@ -15,13 +20,13 @@
 </head>
 <body>
 
-  <nav class="navbar">
+  <nav class="navbar navbar-default">
     <div class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
           <span class="sr-only">Toggle navigation</span>
         </button>
-        <a class="navbar-brand" href="/">Dayly</a>
+        <a class="navbar-brand logo" href="/">Dayly</a>
       </div>
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -97,18 +102,20 @@
   <div class="container">
     <div class="row">
 
-      <div class="col-md-8 col-sm-12">
-        This is a hidden div
+      <div class="col-md-7 col-sm-12 text-center">
+        <p class="large-header">YOUR DAY IN 60 LETTERS OR LESS
+        </p>
+        <hr>
+        <p class="tagline text-muted">'Cause, you know, writing long-ass blog posts is a drag.
       </div>
-
-      <div class="col-md-4 col-sm-12">
-          <h1>All Daylys</h1>
-          <!-- list of daily logs -->
-          <ul class="list-group" id="log-list">
-            <!-- data from log-template goes here -->
-          </ul>
+      <div class=col-md-1>
+        <!-- blank margin div -->
       </div>
-
+      <div class="col-md-4 col-sm-12 list-of-logs">
+        <h1 class="logs-header">Global Updates</h1>
+          <div class="text-muted" id="log-list">
+          </div>
+      </div>
     </div> <!-- .row close -->
   </div> <!-- .container close -->
 
@@ -144,9 +151,7 @@
 
   <!-- underscore template for stream of all Dayly logs -->
   <script type="text/template" id="log-template">
-    <li>
-      <%= diary_entry %> &nbsp; <%= date %>
-    </li>
+      <p><%= diary_entry %> &nbsp; <%= date %></p>
   </script>
 
 </body>

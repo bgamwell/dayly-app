@@ -183,6 +183,12 @@ app.get('/api/logs', function (req, res) { // render every single log to the hom
   });
 });
 
+// app.get('/api/logs', function (req, res) {
+//   Log.find().limit(10, function(err, logs){
+//     res.json(logs);
+//   });
+// });
+
 // show all logs for the current user
 app.get('/api/currentlogs', function(req, res) {
   Log.find({ user: req.session.userId }, function(err, logs){ //this test function is returning a 404 error

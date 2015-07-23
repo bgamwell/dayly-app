@@ -1,1 +1,83 @@
+body {
+	margin-bottom: 50px;
+	background: none;
+}
 
+p {
+  font-family: 'Open Sans', sans-serif;
+}
+
+li {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.list-of-logs {
+  background: white;
+  padding: 0px 30px 20px 30px;
+  border-radius: 20px;
+}
+
+.navbar {
+  border-radius: 0px;
+  background: white;
+}
+
+.large-header {
+  font-family: 'Candal', sans-serif;
+  font-size: 85px;
+  line-height: 95px;
+}
+
+.tagline {
+  font-family: 'Candal', sans-serif;
+  font-size: 45px;
+  line-height: 50px;
+}
+
+.logo {
+  font-family: 'Rock Salt', cursive;
+  font-size: 25px;
+}
+
+.logs-header {
+  font-family: 'Rock Salt', cursive;
+}
+
+.welcome-user {
+  font-family: 'Candal', sans-serif;
+  font-size: 30px;
+}
+
+.counter {
+  font-size: 30px;
+  text-align: center;
+}
+
+.modal-content {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.new-dayly {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.quote-of-the-day {
+  line-height: 12px;
+  font-size: 16px;
+}
+
+#log-list {
+  font-family: 'Open Sans', sans-serif;
+}
+
+#show-user {
+  font-family: 'Candal', sans-serif;
+}
+
+/*.full {
+  background: url(../assets/01.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}*/

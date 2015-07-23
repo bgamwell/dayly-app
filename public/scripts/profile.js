@@ -93,4 +93,20 @@ $(document).ready( function() {
 
   });
 
+
+  // render an inspiring quote to the profile page
+  var quoteTemplate = _.template($('#inspiring-quote').html());
+
+  $.get(
+  'http://api.theysaidso.com/qod.json',
+  function(data) {
+    console.log(data);
+
+    $dataHtml = $(quoteTemplate(data));
+
+    $('#quote').append($dataHtml);
+
+  }
+);
+
 }); // close $(document).ready
