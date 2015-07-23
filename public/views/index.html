@@ -15,14 +15,11 @@
 </head>
 <body>
 
-  <nav class="navbar navbar-default">
+  <nav class="navbar">
     <div class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
           <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="/">Dayly</a>
       </div>
@@ -36,7 +33,7 @@
   </nav>
 
   <!-- signup modal -->
-  <div class="modal fade" id="signup-modal" tabindex="-1" role="dialog" aria-labelledby="signupModal">
+  <div class="modal fade" id="signup-modal" role="dialog" aria-labelledby="signupModal">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -71,7 +68,7 @@
   </div>
 
   <!-- login modal -->
-  <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="loginModal">
+  <div class="modal fade" id="login-modal" role="dialog" aria-labelledby="loginModal">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -131,9 +128,8 @@
   <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/additional-methods.js"></script>
 
   <!-- custom scripts -->
-  <script type="text/javascript" src="scripts/main.js"></script>
+  <script type="text/javascript" src="scripts/nav.js"></script>
   <script type="text/javascript" src="scripts/index.js"></script>
-  <script type="text/javascript" src="scripts/logs.js"></script>
 
   <!-- underscore template for nav links -->
   <script type="text/template" id="nav-template">
@@ -146,7 +142,7 @@
     <% } %>
   </script>
 
-  <!-- underscore template for Dayly logs -->
+  <!-- underscore template for stream of all Dayly logs -->
   <script type="text/template" id="log-template">
     <li>
       <%= diary_entry %> &nbsp; <%= date %>

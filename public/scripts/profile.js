@@ -1,8 +1,8 @@
 $(document).ready( function() {
 
-  console.log("Entry counter is working!");
+  // contains all js logic for the user profile page
 
-  // add a counter to the dayly diary entry
+  // add a character counter to the dayly diary entry
   $(".btn").prop("disabled", true);
 
   $("#new-log").on("input", function() {
@@ -15,7 +15,7 @@ $(document).ready( function() {
     }
   });
 
-  //code to update a post here; html forms don't support put requests--good to know!
+  //AJAX request to handle dayly log updates
   $(document).on('submit', '.edit-form', function() {
 
     console.log($(this).data("log-id"));
@@ -41,6 +41,41 @@ $(document).ready( function() {
 
   });
 
+  // gather and render all logs for the loggin-in user
+
+  // compile underscore template
+  var template = _.template($('#log-template').html());
+
+  // search for all logs from the current user
+    $.get('/api/currentlogs', function(allLogs) {
+
+      // iterate through all logs
+      _.each(allLogs, function(log, index) {
+
+      // pass user through underscore template
+      $logHtml = $(template(log));
+
+      // append user HTML to page
+      $('#log-list').append($logHtml);
+
+      });
+
+    });
+
+  var nameTemplate = _.template($('#user-template').html());
+
+    // AJAX call to server to GET the current user
+    $.get('/api/users/current', function(user) {
+      console.log(user);
+
+      // pass user through underscore template
+      $userName = $(nameTemplate({currentUser: user}));
+
+      // append user HTML to page
+      $('#show-user').append($userName);
+    });
+
+  //AJAX request to handle dayly log deletions
   $(document).on('click', ".glyphicon-remove", function() {
 
     console.log($(this).data("id"));

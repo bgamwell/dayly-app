@@ -11,30 +11,27 @@
   <link type="text/css" rel="stylesheet" href="styles/style.css">
 
   <title>Dayly</title>
-</head>
-<body>
-  <nav class="navbar navbar-default">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="/">Dayly</a>
-      </div>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+          </button>
+          <a class="navbar-brand" href="/">Dayly</a>
+        </div>
 
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right" id="nav-links">
-          <!-- data from nav-template goes here -->
-        </ul>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container -->
-  </nav>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right" id="nav-links">
+            <!-- data from nav-template goes here -->
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container -->
+    </nav>
 
   <!-- signup modal -->
-  <div class="modal fade" id="signup-modal" tabindex="-1" role="dialog" aria-labelledby="signupModal">
+  <div class="modal fade" id="signup-modal" role="dialog" aria-labelledby="signupModal">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -48,9 +45,6 @@
             </div>
             <div class="form-group">
               <input type="text" name="user[lastName]" class="form-control" placeholder="Last Name">
-            </div>
-            <div class="form-group">
-              <input type="text" name="user[avatar]" class="form-control" placeholder="Avatar (Image URL)">
             </div>
             <div class="form-group">
               <input type="email" name="user[email]" class="form-control" placeholder="Email">
@@ -69,7 +63,7 @@
   </div>
 
   <!-- login modal -->
-  <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="loginModal">
+  <div class="modal fade" id="login-modal" role="dialog" aria-labelledby="loginModal">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -138,8 +132,7 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 
   <!-- custom scripts -->
-  <script type="text/javascript" src="scripts/main.js"></script>
-  <script type="text/javascript" src="scripts/users.js"></script>
+  <script type="text/javascript" src="scripts/nav.js"></script>
   <script type="text/javascript" src="scripts/profile.js"></script>
 
   <!-- underscore template for nav links -->
