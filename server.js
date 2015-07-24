@@ -11,7 +11,11 @@ var express = require('express'),
 mongoose.connect(
   process.env.MONGOLAB_URI ||
   process.env.MONGOHQ_URL ||
-  'mongodb://localhost/dayly' // plug in the db name you've been using
+  'mongodb://localhost/dayly', function(err) {
+    if (err) {
+      console.log(err);
+    }
+  }
 );
 
 // middleware
