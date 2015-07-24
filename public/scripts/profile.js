@@ -41,7 +41,7 @@ $(document).ready( function() {
 
   });
 
-  // gather and render all logs for the loggin-in user
+  // gather and render all logs for the logged-in user
 
   // compile underscore template
   var template = _.template($('#log-template').html());
@@ -95,18 +95,18 @@ $(document).ready( function() {
 
 
   // render an inspiring quote to the profile page
-  var quoteTemplate = _.template($('#inspiring-quote').html());
-
-  $.get(
-  'http://api.theysaidso.com/qod.json',
-  function(data) {
-    console.log(data);
-
-    $dataHtml = $(quoteTemplate(data));
-
-    $('#quote').append($dataHtml);
-
-  }
-);
+//   var quoteTemplate = _.template($('#inspiring-quote').html());
+//
+//   $.get(
+//   'http://api.theysaidso.com/qod.json',
+//   function(data) {
+//     console.log(data);
+//
+//     $dataHtml = $(quoteTemplate(data));
+//
+//     $('#quote').append($dataHtml);
+//
+//   }
+// );
 
 }); // close $(document).ready
