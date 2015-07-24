@@ -190,7 +190,7 @@ app.get('/api/logs', function (req, res) {
 
 // show all logs from the current user and sort in reverse chronological order
 app.get('/api/currentlogs', function(req, res){
-  Log.find().sort({ date: -1 }).exec(function(err, logs){
+  Log.find({ user: req.session.userId }).sort({ date: -1 }).exec(function(err, logs){
     res.json(logs);
   });
 });
