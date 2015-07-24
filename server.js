@@ -23,7 +23,7 @@ app.use(session({
   saveUninitialized: true,
   resave: true,
   secret: 'SuperSecretCookie',
-  cookie: { maxAge: 60000 }
+  cookie: { maxAge: 3600000 },
 }));
 
 // variable to ensure mongo search works
