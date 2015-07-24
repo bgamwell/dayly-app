@@ -31,7 +31,7 @@ app.use(session({
 }));
 
 // variable to ensure mongo search works
-var ObjectId = mongoose.Schema.Types.ObjectId;
+// var ObjectId = mongoose.Schema.Types.ObjectId;
 
 // ******Middleware to manage sessions******
 
